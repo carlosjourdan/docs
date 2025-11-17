@@ -72,6 +72,13 @@
               "python-sdk/orbitra-commons-__init__",
               "python-sdk/orbitra-commons-client_settings"
             ]
+          },
+          {
+            "group": "Flows",
+            "pages": [
+              "python-sdk/orbitra-flows-orbitra_deploy",
+              "python-sdk/orbitra-flows-gen_prefect_tf"
+            ]
           }
         ]
       }

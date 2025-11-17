@@ -6,10 +6,12 @@ readme = "README.md"
 requires-python = ">=3.13,<3.14"
 dependencies = [
     "mdxify",
-    "orbitra-lake[azure]>=0.1.6"]
+    "orbitra-lake[azure]>=0.1.6",
+    "orbitra-flows"]
 
 [tool.uv.sources]
 orbitra-lake={index="orbitra"}
+orbitra-flows={index="orbitra"}
 
 [[tool.uv.index]]
 name = "pypi"

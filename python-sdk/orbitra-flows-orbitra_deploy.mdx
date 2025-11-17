@@ -1,0 +1,73 @@
+---
+title: orbitra_deploy
+sidebarTitle: orbitra_deploy
+---
+
+# `orbitra.flows.orbitra_deploy`
+
+## Functions
+
+### `orbitra_deployment`
+
+```python
+orbitra_deployment(name: Optional[str] = None, description: Optional[str] = None, concurrency: Optional[int] = None, schedules: Optional[List[str]] = None, enable_schedules_on_creation: bool = False, tags: Optional[List[str]] = None, flow_config: Callable[..., PrefectFlow] = prefect_flow(log_prints=True), schedules_timezone: Optional[str] = None, container_size: ContainerSizeType = None) -> Callable[[Callable[..., Any]], PrefectFlow]
+```
+
+
+Decorator to register an Orbitra deployment.
+
+This decorator records metadata of a flow so it can later be deployed.
+It also automatically transforms the decorated function into a Prefect Flow (equivalent to @flow).
+
+Parameters
+----------
+name : str, optional
+    A friendly name for the deployment. Defaults to the function's name
+    if not provided.
+
+Examples
+--------
+.. code-block:: python
+
+    from prefect import flow
+    from orbitra.flows.orbitra_deploy import orbitra_deployment, ContainerSize
+
+    @orbitra_deployment()
+    def manual_flow():
+        ...
+
+    @orbitra_deployment(
+        name="reporting-prod",
+        flow_config=flow(name="daily-reporting", log_prints=True),
+        schedules=["cron=0 7 * * *"],
+        tags=["prod", "finance"],
+        container_size="M",
+    )
+    def generate_reports(day: str = "yesterday"):
+        ...
+
+    @orbitra_deployment(
+        flow_config=flow(name="etl-runner", retries=2, retry_delay_seconds=60),
+        schedules=["interval=3600"],
+        container_size=ContainerSize(memory_gb=16, cpu_cores=6),
+    )
+    def hourly_etl():
+        ...
+
+Notes
+-----
+Do NOT use @flow together with @orbitra_deployment.
+The decorator already transforms the function into a Prefect Flow.
+
+
+### `get_registered_deployments`
+
+```python
+get_registered_deployments() -> list[OrbitraDeploymentMeta]
+```
+
+## Classes
+
+### `ContainerSize`
+
+### `OrbitraDeploymentMeta`
