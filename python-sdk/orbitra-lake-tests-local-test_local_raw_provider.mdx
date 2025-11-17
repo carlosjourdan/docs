@@ -1,0 +1,38 @@
+---
+title: test_local_raw_provider
+sidebarTitle: test_local_raw_provider
+---
+
+# `orbitra.lake.tests.local.test_local_raw_provider`
+
+## Functions
+
+### `fake_settings` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/local/test_local_raw_provider.py#L13" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+fake_settings()
+```
+
+
+Returns fake settings for tests.
+
+
+### `test_get_raw_file_system_returns_local_fs` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/local/test_local_raw_provider.py#L18" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_get_raw_file_system_returns_local_fs(fake_settings)
+```
+
+
+Tests that get_raw_file_system returns a LocalFileSystem.
+
+
+### `test_get_raw_file_system_ignores_namespace` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/local/test_local_raw_provider.py#L38" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_get_raw_file_system_ignores_namespace(fake_settings)
+```
+
+
+Tests that namespace parameter is accepted but doesn't affect the result.
+

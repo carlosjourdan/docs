@@ -1,0 +1,50 @@
+---
+title: local
+sidebarTitle: local
+---
+
+# `orbitra.lake.raw.local`
+
+## Classes
+
+### `LocalRawProvider` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/local.py#L18" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Local filesystem implementation of BaseRawProvider.
+
+This class provides a local alternative to cloud-based raw data
+storage. Instead of uploading data to a remote Blob Storage,
+DataFrames are persisted as Parquet files on the local filesystem.
+
+
+**Methods:**
+
+#### `save_raw_bytes_to_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/local.py#L43" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+save_raw_bytes_to_blob(self, bytes_io: io.BytesIO, full_filename: str, namespace: str) -> bool
+```
+
+#### `save_raw_df_to_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/local.py#L53" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+save_raw_df_to_blob(self, df: pd.DataFrame, full_filename: str, namespace: str) -> bool
+```
+
+#### `read_raw_bytes_from_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/local.py#L65" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+read_raw_bytes_from_blob(self, full_filename: str, namespace: str) -> io.BytesIO
+```
+
+#### `read_raw_df_from_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/local.py#L74" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+read_raw_df_from_blob(self, full_filename: str, namespace: str) -> pd.DataFrame
+```
+
+#### `get_raw_file_system` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/local.py#L85" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+get_raw_file_system(self, namespace: str) -> AbstractFileSystem
+```

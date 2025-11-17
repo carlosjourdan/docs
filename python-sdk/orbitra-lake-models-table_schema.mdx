@@ -1,0 +1,46 @@
+---
+title: table_schema
+sidebarTitle: table_schema
+---
+
+# `orbitra.lake.models.table_schema`
+
+## Classes
+
+### `ColumnSchema` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/models/table_schema.py#L14" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Schema for a column in a table.
+
+
+**Methods:**
+
+#### `ensure_name_has_no_special_characters` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/models/table_schema.py#L31" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+ensure_name_has_no_special_characters(cls, value: str) -> str
+```
+
+Ensure the column name does not contain special characters.
+
+Only alphanumeric characters and underscores are allowed.
+
+
+### `TableSchema` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/models/table_schema.py#L54" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Schema for a table in a database.
+
+
+**Methods:**
+
+#### `ensure_name_has_no_special_characters` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/models/table_schema.py#L67" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+ensure_name_has_no_special_characters(cls, value: str) -> str
+```
+
+Ensure the table name does not contain special characters.
+
+Only alphanumeric characters and underscores are allowed.
+

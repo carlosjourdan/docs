@@ -66,6 +66,65 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Python SDK",
+        "groups": [
+          {
+            "group": "Core",
+            "pages": [
+              "python-sdk/orbitra-lake-__init__",
+              "python-sdk/orbitra-lake-client"
+            ]
+          },
+          {
+            "group": "Database",
+            "pages": [
+              "python-sdk/orbitra-lake-db-__init__",
+              "python-sdk/orbitra-lake-db-base",
+              "python-sdk/orbitra-lake-db-factory",
+              "python-sdk/orbitra-lake-db-local",
+              "python-sdk/orbitra-lake-db-pyiceberg",
+              "python-sdk/orbitra-lake-db-unity"
+            ]
+          },
+          {
+            "group": "Models",
+            "pages": [
+              "python-sdk/orbitra-lake-models-__init__",
+              "python-sdk/orbitra-lake-models-filter",
+              "python-sdk/orbitra-lake-models-input_table_parser",
+              "python-sdk/orbitra-lake-models-lake_error",
+              "python-sdk/orbitra-lake-models-overwrite_table_data_response",
+              "python-sdk/orbitra-lake-models-table_schema"
+            ]
+          },
+          {
+            "group": "Raw Storage",
+            "pages": [
+              "python-sdk/orbitra-lake-raw-__init__",
+              "python-sdk/orbitra-lake-raw-base",
+              "python-sdk/orbitra-lake-raw-factory",
+              "python-sdk/orbitra-lake-raw-local",
+              "python-sdk/orbitra-lake-raw-storage_account"
+            ]
+          },
+          {
+            "group": "Services",
+            "pages": [
+              "python-sdk/orbitra-lake-services-__init__",
+              "python-sdk/orbitra-lake-services-db",
+              "python-sdk/orbitra-lake-services-raw"
+            ]
+          },
+          {
+            "group": "Commons",
+            "pages": [
+              "python-sdk/orbitra-commons-__init__",
+              "python-sdk/orbitra-commons-client_settings"
+            ]
+          }
+        ]
       }
     ],
     "global": {

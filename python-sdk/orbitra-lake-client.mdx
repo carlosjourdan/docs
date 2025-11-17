@@ -1,0 +1,363 @@
+---
+title: client
+sidebarTitle: client
+---
+
+# `orbitra.lake.client`
+
+## Classes
+
+### `OrbitraLakeClient` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L25" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Client for interacting with the Orbitra Lake database.
+
+
+**Methods:**
+
+#### `list_namespaces` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L74" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+list_namespaces(self) -> list[str]
+```
+
+List all namespaces in the database.
+
+**Returns:**
+- list\[str]: A list of namespace names.
+
+
+#### `create_table` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L83" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+create_table(self, namespace: str, table: TableSchema) -> TableSchema
+```
+
+Create a new table in the specified namespace.
+
+**Args:**
+- `namespace`: The namespace where the table should be created.
+- `table`: The schema of the table to create.
+
+**Returns:**
+- The schema of the created table.
+
+**Raises:**
+- `LakeError`: If the table already exists or if the namespace does not exist.
+
+
+#### `list_tables` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L99" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+list_tables(self, namespace: str) -> list[str]
+```
+
+List all tables in the specified namespace.
+
+**Args:**
+- `namespace`: The namespace to list tables from.
+
+**Returns:**
+- list\[str]: A list of table names in the specified namespace.
+
+**Raises:**
+- `LakeError`: If the namespace does not exist.
+
+
+#### `get_table_metadata` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L114" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+get_table_metadata(self, namespace: str, table_name: str) -> TableSchema
+```
+
+Retrieve the metadata of a table.
+
+**Args:**
+- `namespace`: The namespace where the table is located.
+- `table_name`: The name of the table to retrieve metadata for.
+
+**Returns:**
+- The schema of the table if it exists.
+
+**Raises:**
+- `LakeError`: If the table does not exist.
+
+
+#### `add_column_to_table` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L130" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+add_column_to_table(self, namespace: str, table_name: str, column: str, column_type: AllowedColumnTypes) -> TableSchema
+```
+
+Add a new column to an existing table.
+
+**Args:**
+- `namespace`: The namespace where the table is located.
+- `table_name`: The name of the table to add the column to.
+- `column`: The name of the new column to add.
+- `column_type`: The data type of the new column.
+
+**Returns:**
+- The updated schema of the table after adding the new column.
+
+**Raises:**
+- `LakeError`: If the column is invalid, already exists or if the table does not exist.
+
+
+#### `remove_column_from_table` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L148" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+remove_column_from_table(self, namespace: str, table_name: str, column: str) -> TableSchema
+```
+
+Remove a column from an existing table.
+
+**Args:**
+- `namespace`: The namespace where the table is located.
+- `table_name`: The name of the table to remove the column from.
+- `column`: The name of the column to remove.
+
+**Returns:**
+- The updated schema of the table after removing the column.
+
+**Raises:**
+- `LakeError`: If the table or column does not exist or if it is a reserved column.
+
+
+#### `add_or_update_table` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L165" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+add_or_update_table(self, namespace: str, table: TableSchema, allow_column_removal: bool = False) -> TableSchema
+```
+
+Add or update a table.
+
+This method will add the table if it does not exist, or update it if it does.
+Updates are only allowed in regular columns. Partition columns are not allowed to be updated.
+
+**Args:**
+- `namespace`: The namespace where the table is located.
+- `table`: The schema of the table to add or update.
+- `allow_column_removal`: Whether to allow column removal.
+
+**Returns:**
+- The updated schema of the table after adding or updating it.
+
+**Raises:**
+- `LakeError`: If there are changes in partition columns or if a column is removed and allow_column_removal is False.
+
+
+#### `overwrite_data` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L185" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+overwrite_data(self, namespace: str, table_name: str, df: pd.DataFrame) -> OverwriteTableDataResponse
+```
+
+Overwrite partitions data in a table.
+
+This method overwrites the data in a table based on the partition columns present in the DataFrame.
+If the table has no partition columns, it overwrites the entire table data.
+
+**Args:**
+- `namespace`: The namespace where the table is located.
+- `table_name`: The name of the table to overwrite data in.
+- `df`: The DataFrame containing the data to overwrite in the table.
+
+**Returns:**
+- A response object containing information about the modified partitions and inserted rows.
+
+**Raises:**
+- `LakeError`: If the table does not exist or if the DataFrame contains invalid data.
+
+
+#### `delete_data` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L205" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+delete_data(self, namespace: str, table_name: str, partition_filters: list[PartitionFilter]) -> str
+```
+
+Delete data from a table based on partition filters.
+
+This method deletes data from a table based on the provided partition filters.
+Partition filters are combined with an AND operation.
+If the table has no partition columns, it deletes the entire table data.
+
+**Args:**
+- `namespace`: The namespace where the table is located.
+- `table_name`: The name of the table to delete data from.
+- `partition_filters`: A list of partition filters to apply for the delete operation.
+Must be empty if the table has no partition columns.
+
+**Returns:**
+- An operation ID for tracking the delete operation.
+
+**Raises:**
+- `LakeError`: If the table does not exist or if the partition filters are invalid.
+
+
+#### `overwrite_data_by_custom_columns` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L227" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+overwrite_data_by_custom_columns(self, namespace: str, table_name: str, custom_columns: list[str], df: pd.DataFrame) -> OverwriteDataByCustomColumnsResponse
+```
+
+Overwrite data into a table by custom columns.
+
+This method overwrites data into a table based on the provided custom columns and data.
+It will delete data based on the values in the custom columns and then insert the given data frame.
+
+**Args:**
+- `namespace`: The namespace where the table is located.
+- `table_name`: The name of the table to overwrite data into.
+- `custom_columns`: A list of columns to use as custom columns.
+- `df`: The DataFrame containing the data to overwrite.
+
+**Returns:**
+- A response object containing information about the modified custom values and inserted rows.
+
+**Raises:**
+- `LakeError`: If the table does not exist or if the custom columns are invalid.
+
+
+#### `get_table_data` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L250" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+get_table_data(self, namespace: str, table_name: str, scan_filters: list[Filter]) -> pd.DataFrame
+```
+
+Retrieve data from a table based on scan filters.
+
+This method retrieves data from a table based on the provided scan filters.
+Scan filters are combined with an AND operation.
+If an empty list of scan filters is provided, it retrieves all data from the table.
+
+**Args:**
+- `namespace`: The namespace where the table is located.
+- `table_name`: The name of the table to retrieve data from.
+- `scan_filters`: A list of column filters to apply for the query.
+
+**Returns:**
+- pd.DataFrame: A DataFrame containing the data retrieved from the table.
+
+**Raises:**
+- `LakeError`: If the table does not exist or if the scan filters are invalid.
+
+
+#### `run_query` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L271" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+run_query(self, namespace: str, query: str, engine: Literal['local', 'remote'] = 'local') -> pd.DataFrame
+```
+
+Run a query using the selected environment as query engine.
+
+**Args:**
+- `namespace`: The namespace to run the query in.
+- `query`: The query to run.
+- `engine`: The engine to use for the query.
+
+**Returns:**
+- pd.DataFrame: A DataFrame containing the retrieved data.
+
+**Raises:**
+- `LakeError`: If the query is invalid or if the engine is not supported.
+
+
+#### `save_raw_bytes_to_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L288" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+save_raw_bytes_to_blob(self, bytes_io: io.BytesIO, full_filename: str, namespace: str) -> bool
+```
+
+Save a bytes object as a raw blob in Azure Blob Storage.
+
+**Args:**
+- `bytes_io`: The bytes object to persist.
+- `full_filename`: The blob path, including virtual directories,
+e.g. `"finance/2025/09/transactions.parquet"`.
+- `namespace`: Namespace used to compose the container name.
+The effective container is
+`settings.orbitra_lake_raw_container_prefix + namespace`.
+
+**Returns:**
+- True if the bytes object was stored, False if it already exists and is the same.
+
+
+#### `save_raw_df_to_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L311" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+save_raw_df_to_blob(self, df: pd.DataFrame, full_filename: str, namespace: str) -> bool
+```
+
+Save a DataFrame as a Parquet blob in Azure Blob Storage.
+
+The DataFrame is serialized to Parquet in memory and uploaded
+to the configured storage account and container. Existing blobs
+will be overwritten.
+
+**Args:**
+- `df`: The DataFrame to persist.
+- `full_filename`: The blob path, including virtual directories,
+e.g. `"finance/2025/09/transactions.parquet"`.
+- `namespace`: Namespace used to compose the container name.
+The effective container is
+`settings.orbitra_lake_raw_container_prefix + namespace`.
+
+**Returns:**
+- True if the DataFrame was stored, False if it already exists and is the same.
+
+
+#### `read_raw_bytes_from_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L338" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+read_raw_bytes_from_blob(self, full_filename: str, namespace: str) -> io.BytesIO
+```
+
+Read a raw bytes object from the specified blob storage location.
+
+**Args:**
+- `full_filename`: The full path and filename of the raw bytes object to read from the raw storage container.
+- `namespace`: Namespace used to compose the container name.
+The effective container is
+`settings.orbitra_lake_raw_container_prefix + namespace`.
+
+**Returns:**
+- io.BytesIO: The raw bytes object read from the blob storage.
+
+
+#### `read_raw_df_from_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L357" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+read_raw_df_from_blob(self, full_filename: str, namespace: str) -> pd.DataFrame
+```
+
+Reads a raw Parquet file from the specified blob storage location and returns its contents as a pandas DataFrame.
+
+**Args:**
+- `full_filename`: The full path and filename of the Parquet file to read from the raw storage container.
+- `namespace`: Namespace used to compose the container name.
+The effective container is
+`settings.orbitra_lake_raw_container_prefix + namespace`.
+
+**Returns:**
+- pd.DataFrame: The contents of the Parquet file as a pandas DataFrame.
+
+
+#### `get_raw_file_system` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/client.py#L376" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+get_raw_file_system(self, namespace: str) -> AbstractFileSystem
+```
+
+Get a filesystem interface for the raw storage.
+
+This method returns a filesystem interface (e.g., AzureBlobFileSystem or
+LocalFileSystem) for direct file operations on the raw storage beyond
+the standard save/read operations.
+
+**Args:**
+- `namespace`: Logical namespace used to compose container/directory name.
+
+**Returns:**
+- A filesystem interface for accessing raw storage.
+

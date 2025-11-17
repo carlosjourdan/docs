@@ -1,0 +1,70 @@
+---
+title: test_retry
+sidebarTitle: test_retry
+---
+
+# `orbitra.lake.tests.test_retry`
+
+## Classes
+
+### `TestRetryDecorator` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/test_retry.py#L11" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Test cases for the retry decorator function.
+
+
+**Methods:**
+
+#### `test_successful_function_no_retry` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/test_retry.py#L14" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_successful_function_no_retry(self)
+```
+
+Test that a successful function doesn't retry.
+
+
+#### `test_function_succeeds_after_retries` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/test_retry.py#L28" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_function_succeeds_after_retries(self)
+```
+
+Test that a function succeeds after some retries.
+
+
+#### `test_function_fails_all_retries` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/test_retry.py#L44" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_function_fails_all_retries(self)
+```
+
+Test that a function fails after all retry attempts.
+
+
+#### `test_retry_with_specific_exception` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/test_retry.py#L58" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_retry_with_specific_exception(self)
+```
+
+Test that retry only catches specified exception types.
+
+
+#### `test_retry_timing_and_backoff` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/test_retry.py#L72" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_retry_timing_and_backoff(self)
+```
+
+Test that retry delays increase with backoff factor.
+
+
+#### `test_retry_preserves_function_metadata` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/test_retry.py#L90" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_retry_preserves_function_metadata(self)
+```
+
+Test that the wraps decorator preserves function metadata.
+

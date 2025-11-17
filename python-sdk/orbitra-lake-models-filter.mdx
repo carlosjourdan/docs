@@ -1,0 +1,34 @@
+---
+title: filter
+sidebarTitle: filter
+---
+
+# `orbitra.lake.models.filter`
+
+## Classes
+
+### `Filter` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/models/filter.py#L13" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Represents a filter for a column in a table.
+
+
+**Methods:**
+
+#### `get_pyiceberg_filter_expression` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/models/filter.py#L26" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+get_pyiceberg_filter_expression(self) -> LiteralPredicate
+```
+
+Convert the filter to a PyIceberg filter expression.
+
+**Returns:**
+- A PyIceberg filter expression corresponding to the filter.
+
+
+### `PartitionFilter` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/models/filter.py#L46" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Represents a filter for a partition column in a table.
+

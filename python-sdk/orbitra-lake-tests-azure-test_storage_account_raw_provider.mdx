@@ -1,0 +1,108 @@
+---
+title: test_storage_account_raw_provider
+sidebarTitle: test_storage_account_raw_provider
+---
+
+# `orbitra.lake.tests.azure.test_storage_account_raw_provider`
+
+## Functions
+
+### `fake_settings` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/azure/test_storage_account_raw_provider.py#L16" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+fake_settings()
+```
+
+
+Returns fake settings for tests.
+
+
+### `test_save_raw_df_to_blob_uploads_dataframe` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/azure/test_storage_account_raw_provider.py#L21" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_save_raw_df_to_blob_uploads_dataframe(fake_settings)
+```
+
+
+Tests that save_raw_to_blob uploads a DataFrame.
+
+
+### `test_read_raw_df_from_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/azure/test_storage_account_raw_provider.py#L55" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_read_raw_df_from_blob(fake_settings)
+```
+
+
+Tests that read_raw reads a DataFrame from a blob.
+
+
+### `test_save_raw_bytes_to_blob_uploads_bytes` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/azure/test_storage_account_raw_provider.py#L94" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_save_raw_bytes_to_blob_uploads_bytes(fake_settings)
+```
+
+
+Tests that save_raw_bytes_to_blob uploads BytesIO and returns True.
+
+
+### `test_save_raw_bytes_to_blob_skips_upload_when_md5_matches` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/azure/test_storage_account_raw_provider.py#L126" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_save_raw_bytes_to_blob_skips_upload_when_md5_matches(fake_settings)
+```
+
+
+Tests that save_raw_bytes_to_blob returns False when blob exists with same MD5.
+
+
+### `test_save_raw_bytes_to_blob_overwrites_when_md5_differs` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/azure/test_storage_account_raw_provider.py#L160" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_save_raw_bytes_to_blob_overwrites_when_md5_differs(fake_settings)
+```
+
+
+Tests that save_raw_bytes_to_blob uploads when blob exists but MD5 differs.
+
+
+### `test_read_raw_bytes_from_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/azure/test_storage_account_raw_provider.py#L193" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_read_raw_bytes_from_blob(fake_settings)
+```
+
+
+Tests that read_raw_bytes_from_blob reads BytesIO from blob.
+
+
+### `test_get_raw_file_system_returns_azure_blob_fs` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/azure/test_storage_account_raw_provider.py#L228" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_get_raw_file_system_returns_azure_blob_fs(fake_settings)
+```
+
+
+Tests that get_raw_file_system returns a container-scoped filesystem with correct configuration.
+
+
+### `test_get_raw_file_system_extracts_account_name_correctly` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/azure/test_storage_account_raw_provider.py#L269" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_get_raw_file_system_extracts_account_name_correctly(fake_settings)
+```
+
+
+Tests that account name is correctly extracted from storage URL.
+
+
+### `test_get_raw_file_system_uses_namespace_for_container` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/tests/azure/test_storage_account_raw_provider.py#L294" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+test_get_raw_file_system_uses_namespace_for_container(fake_settings)
+```
+
+
+Tests that namespace is correctly used to form container name.
+

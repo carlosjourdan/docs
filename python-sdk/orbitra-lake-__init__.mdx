@@ -1,0 +1,28 @@
+---
+title: __init__
+sidebarTitle: __init__
+---
+
+# `orbitra.lake`
+
+
+Orbitra Lake module.
+
+## Functions
+
+### `get_lake_client` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/__init__.py#L28" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+get_lake_client(environment: str = 'prod', credential: Optional[TokenCredential] = None) -> OrbitraLakeClient
+```
+
+
+Get the Orbitra Lake client based on the environment.
+
+**Args:**
+- `environment`: Environment to use ("prod" or "dev"). Defaults to "prod".
+- `credential`: Synchronous Azure credential for API operations.
+
+**Returns:**
+- Configured lake client instance.
+

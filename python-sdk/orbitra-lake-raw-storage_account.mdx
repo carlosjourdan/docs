@@ -1,0 +1,52 @@
+---
+title: storage_account
+sidebarTitle: storage_account
+---
+
+# `orbitra.lake.raw.storage_account`
+
+## Classes
+
+### `StorageAccountRawProvider` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/storage_account.py#L21" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Azure Blob Storage implementation of BaseRawProvider.
+
+This provider persists pandas DataFrames as Parquet files directly
+into an Azure Blob Storage container. It requires a valid Azure
+`TokenCredential` for authentication and Orbitra Lake settings to
+resolve the target account. The container name is provided per
+operation (read/write).
+
+
+**Methods:**
+
+#### `save_raw_bytes_to_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/storage_account.py#L54" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+save_raw_bytes_to_blob(self, bytes_io: io.BytesIO, full_filename: str, namespace: str) -> bool
+```
+
+#### `save_raw_df_to_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/storage_account.py#L69" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+save_raw_df_to_blob(self, df: pd.DataFrame, full_filename: str, namespace: str) -> bool
+```
+
+#### `read_raw_bytes_from_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/storage_account.py#L75" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+read_raw_bytes_from_blob(self, full_filename: str, namespace: str) -> io.BytesIO
+```
+
+#### `read_raw_df_from_blob` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/storage_account.py#L84" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+read_raw_df_from_blob(self, full_filename: str, namespace: str) -> pd.DataFrame
+```
+
+#### `get_raw_file_system` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/raw/storage_account.py#L90" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+get_raw_file_system(self, namespace: str) -> AbstractFileSystem
+```

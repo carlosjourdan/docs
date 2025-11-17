@@ -1,0 +1,102 @@
+---
+title: pyiceberg
+sidebarTitle: pyiceberg
+---
+
+# `orbitra.lake.db.pyiceberg`
+
+## Classes
+
+### `PyIcebergDB` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L35" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+
+Abstract base class for PyIceberg database operations.
+
+catalog (Catalog): The catalog used to interact with the database.
+
+
+**Methods:**
+
+#### `create_namespace` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L63" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+create_namespace(self, namespace: str) -> bool
+```
+
+#### `list_namespaces` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L70" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+list_namespaces(self) -> list[str]
+```
+
+#### `create_table` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L80" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+create_table(self, namespace: str, table: TableSchema) -> bool
+```
+
+#### `list_tables` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L120" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+list_tables(self, namespace: str) -> list[str]
+```
+
+#### `get_table_metadata` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L133" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+get_table_metadata(self, namespace: str, table_name: str) -> TableSchema
+```
+
+#### `add_column_to_table` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L157" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+add_column_to_table(self, namespace: str, table_name: str, column: str, column_type: AllowedColumnTypes) -> bool
+```
+
+#### `remove_column_from_table` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L175" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+remove_column_from_table(self, namespace: str, table_name: str, column: str) -> bool
+```
+
+#### `update_column_type` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L183" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+update_column_type(self, namespace: str, table_name: str, column: str, column_type: AllowedColumnTypes) -> bool
+```
+
+#### `overwrite_partitions_data` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L227" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+overwrite_partitions_data(self, namespace: str, table_name: str, data: pd.DataFrame) -> str
+```
+
+#### `overwrite_data` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L242" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+overwrite_data(self, namespace: str, table_name: str, data: pd.DataFrame) -> str
+```
+
+#### `delete_data` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L258" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+delete_data(self, namespace: str, table_name: str, partition_filters: list[PartitionFilter]) -> str
+```
+
+#### `overwrite_data_by_custom_columns` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L274" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+overwrite_data_by_custom_columns(self, namespace: str, table_name: str, custom_columns: list[str], data: pd.DataFrame) -> str
+```
+
+#### `get_table_data` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L291" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+get_table_data(self, namespace: str, table_name: str, scan_filters: list[Filter]) -> pd.DataFrame
+```
+
+#### `run_query` <sup><a href="https://github.com/carlosjourdan/docs/blob/main/orbitra/lake/db/pyiceberg.py#L298" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python
+run_query(self, namespace: str, query: str, engine: Literal['local', 'remote'] = 'local') -> pd.DataFrame
+```
